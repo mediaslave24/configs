@@ -11,3 +11,17 @@ task :vim do
   FileUtils.cp_r File.expand_path("~/.vim"), '.'
   puts 'Ok', ''
 end
+
+task :pull_vim do
+  puts "Copying vimfiles to ~/.vim and ~/.vimrc"
+  FileUtils.cp './.vimrc', File.expand_path("~/.vimrc")
+
+  FileUtils.rm_rf File.expand_path('~/.vim')
+  FileUtils.cp_r "./.vim", File.expand_path('~/')
+  puts "Ok", ''
+end
+
+task :pull_subtle do
+  puts "Copying subtle.rb to host"
+  FileUtils.cp "./subtle.rb", File.expand_path('~/.config/subtle/subtle.rb')
+end
