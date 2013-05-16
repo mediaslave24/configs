@@ -10,6 +10,7 @@ set :gravity_tiling, true
 set :click_to_focus, false
 set :skip_pointer_warp, false
 set :skip_urgent_warp, false
+set :wmname, true
 
 # Programs
 editor =       "gvim"
@@ -30,6 +31,11 @@ end
 grab "W-Home", "sudo shutdown -P +0"
 grab "W-End",  "sudo reboot"
 grab "W-Delete",    "xscreensaver-command -lock"
+grab "W-Insert",    "xscreensaver-command -activate"
+
+grab "W-C-n", "setxkbmap -layout 'us, ru, ua'"
+grab "W-C-m", "setxkbmap -layout 'ru, ua, us'"
+grab "W-C-comma", "setxkbmap -layout 'ua, us, ru'"
 
 # Programs
 grab "W-Return", terminal
@@ -43,11 +49,7 @@ grab "W-x",      music_player
 # Combos
 grab "W-l 4",    "#{browser} http://localhost:4000"
 grab "W-l 3",    "#{browser} http://localhost:3000"
-grab "W-l s",      :ViewJump6
-grab "W-l e",      :ViewJump7
-grab "W-l m",      :ViewJump5
-grab "W-l f",      :ViewJump4
-grab "W-l v",      :ViewJump3
+grab "W-l d",     "#{browser} http://www.feedly.com/home"
 
 # Music
 grab "W-o",     "exaile --prev"
@@ -55,8 +57,11 @@ grab "W-p",     "exaile --next"
 grab "W-space", "exaile --play-pause"
 
 # Sound
-grab "W-f",      "amixer -c 1 set Master 4%-"
-grab "W-g",      "amixer -c 1 set Master 4%+"
+grab "W-f",      "amixer -c 0 set Master 4%-"
+grab "W-g",      "amixer -c 0 set Master 4%+"
+(1..9).each do |i|
+  grab "W-C-KP_#{i}", "amixer -c 0 set Master #{i*10}%"
+end
 
 # Else
 grab "A-Tab", :WindowLower
@@ -80,11 +85,6 @@ grab "W-KP_3", [ :bottom_right, :bottom_right66, :bottom_right33 ]
 
 ###############################
 
-sublet :cpu do
-  interval 2
-end
-
-
 screen 1 do
   top [ 
     :views, 
@@ -95,7 +95,6 @@ screen 1 do
     :tasks,
     :separator,
     :cpuchart,
-    :volume,
     :separator,
     :clock 
   ]
@@ -245,9 +244,11 @@ tag "skype_files" do
   match name: "^file.transfers"
   gravity :skype_files
 end
+
 tag "skype" do 
   match "skype"
   gravity :center
+  float true
 end
 
 tag "picture" do
@@ -255,11 +256,11 @@ tag "picture" do
 end
 
 tag "filemanager" do
-  match ".*pcmanfm.*|ranger|vifm|spacefm|thunar|nemo"
+  match "pcmanfm|ranger|vifm|spacefm|thunar|nemo"
 end
 
 tag "browser" do
-  match "#{browser}*|uzbl|opera|firefox|navigator"
+  match "#{browser}|uzbl|opera|firefox|navigator"
   float true
 end
 
@@ -277,6 +278,5 @@ view "www",   "browser"
 view "dev",   "editor"
 view "fm",    "filemanager"
 view "media", "media"
-view "skype", "skype_files|skype_list|skype"
+view "skype", "skype|skype_files"
 view "else",   "default"
-
