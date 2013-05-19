@@ -29,6 +29,9 @@ static const Rule rules[] = {
 	{ "Exaile",   NULL,       NULL,  1 << 4,            False,       -1 },
 	{ "Vlc",      NULL,       NULL,  1 << 4,            False,       -1 },
 	{ "Deluge",   NULL,       NULL,  1 << 5,            False,       -1 },
+	{ "Mirage",   NULL,       NULL,       0,            False,       -1 },
+	{ "feh",      NULL,       NULL,       0,            False,       -1 },
+
 };
 
 /* layout(s) */
