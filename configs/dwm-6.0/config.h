@@ -16,7 +16,7 @@ static const Bool showbar           = True;     /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "www", "editor", "term", "files", "media", "torrents", "7", "8", "9" };
+static const char *tags[] = { "www", "editor", "term", "files", "media", "torrents", "messenger", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -31,6 +31,7 @@ static const Rule rules[] = {
 	{ "Deluge",   NULL,       NULL,  1 << 5,            False,       -1 },
 	{ "Mirage",   NULL,       NULL,       0,            False,       -1 },
 	{ "feh",      NULL,       NULL,       0,            False,       -1 },
+	{ "Skype",    NULL,       NULL,  1 << 6,            False,       -1 },
 
 };
 
@@ -59,17 +60,16 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  =   { "urxvt", NULL };
-static const char *browsercmd[] = { "chromium", NULL };
-static const char *musiccmd[] =   { "exaile", NULL };
-static const char *fmcmd[] =      { "pcmanfm", NULL };
-static const char *skypecmd[] =   { "skype", NULL };
-
+static const char *dmenucmd[] =        { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]  =        { "urxvt", NULL };
+static const char *browsercmd[] =      { "chromium", NULL };
+static const char *musiccmd[] =        { "exaile", NULL };
+static const char *fmcmd[] =           { "pcmanfm", NULL };
+static const char *skypecmd[] =        { "skype", "--disable-cleanlooks", "-style", "GTK", NULL };
 static const char *toggle_exaile[] =   { "exaile", "-t", NULL };
 
-static const char *volup[] =      { "dwmstatus", "volume", "up", NULL };
-static const char *voldown[] =    { "dwmstatus", "volume", "down", NULL };
+static const char *volup[] =   { "dwmstatus", "volume", "up", NULL };
+static const char *voldown[] = { "dwmstatus", "volume", "down", NULL };
 
 static const char *vol0[] = { "dwmstatus", "volume", "set", "0", NULL };
 static const char *vol1[] = { "dwmstatus", "volume", "set", "10", NULL };
@@ -94,18 +94,8 @@ static const char *shutdowncmd[] = { "sudo", "shutdown -h", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_Home,   spawn,          {.v = shutdowncmd   } },
-	{ MODKEY,                       XK_End,    spawn,          {.v = rebootcmd   } },
-
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd   } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd    } },
-	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
-	{ MODKEY,                       XK_x,      spawn,          {.v = musiccmd   } },
-	{ MODKEY,                       XK_d,      spawn,          {.v = fmcmd      } },
-	{ MODKEY,                       XK_z,      spawn,          {.v = skypecmd   } },
-	{ MODKEY,                       XK_f,      spawn,          {.v = voldown    } },
-	{ MODKEY,                       XK_g,      spawn,          {.v = volup      } },
-
+	{ ALTMOD,                       XK_f,      spawn,          {.v = voldown   } },
+	{ ALTMOD,                       XK_g,      spawn,          {.v = volup     } },
 	{ ALTMOD,                       XK_0,      spawn,          {.v = vol0      } },
 	{ ALTMOD,                       XK_1,      spawn,          {.v = vol1      } },
 	{ ALTMOD,                       XK_2,      spawn,          {.v = vol2      } },
@@ -116,12 +106,19 @@ static Key keys[] = {
 	{ ALTMOD,                       XK_7,      spawn,          {.v = vol7      } },
 	{ ALTMOD,                       XK_8,      spawn,          {.v = vol8      } },
 	{ ALTMOD,                       XK_9,      spawn,          {.v = vol9      } },
-
 	{ ALTMOD,                       XK_space,  spawn,          {.v = toggle_exaile      } },
+	{ ALTMOD,                       XK_a,      spawn,          {.v = xkben      } },
+	{ ALTMOD,                       XK_s,      spawn,          {.v = xkbua      } },
+	{ ALTMOD,                       XK_d,      spawn,          {.v = xkbru      } },
 
-	{ ALTMOD,                       XK_a,  spawn,          {.v = xkben      } },
-	{ ALTMOD,                       XK_s,  spawn,          {.v = xkbua      } },
-	{ ALTMOD,                       XK_d,  spawn,          {.v = xkbru      } },
+	{ MODKEY,                       XK_Home,   spawn,          {.v = shutdowncmd   } },
+	{ MODKEY,                       XK_End,    spawn,          {.v = rebootcmd   } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd   } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd    } },
+	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_x,      spawn,          {.v = musiccmd   } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = fmcmd      } },
+	{ MODKEY,                       XK_z,      spawn,          {.v = skypecmd   } },
 
 
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
