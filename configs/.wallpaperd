@@ -1,0 +1,6 @@
+#!/bin/bash
+feh  --bg-fill ~/wallpaper
+
+while inotifywait -e modify ~/wallpaper; do
+  feh  --bg-fill ~/wallpaper
+done
