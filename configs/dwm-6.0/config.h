@@ -23,7 +23,7 @@ static const Rule rules[] = {
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1,            False,       -1 },
 	{ "Chromium", NULL,       NULL,       1,            True,        -1 },
-	{ "Gvim",     NULL,       NULL,  1 << 1,            False,       -1 },
+	{ "Gvim",     NULL,       NULL,  1 << 1,            True,        -1 },
 	{ "URxvt",    NULL,       NULL,  1 << 2,            False,       -1 },
 	{ "Pcmanfm",  NULL,       NULL,  1 << 3,            False,       -1 },
 	{ "Exaile",   NULL,       NULL,  1 << 4,            False,       -1 },
@@ -65,6 +65,7 @@ static const char *termcmd[]  =        { "urxvt", NULL };
 static const char *browsercmd[] =      { "chromium", NULL };
 static const char *musiccmd[] =        { "exaile", NULL };
 static const char *fmcmd[] =           { "pcmanfm", NULL };
+static const char *torrentscmd[] =     { "deluge", NULL };
 static const char *skypecmd[] =        { "skype", "--disable-cleanlooks", "-style", "GTK", NULL };
 static const char *toggle_exaile[] =   { "exaile", "-t", NULL };
 
@@ -119,6 +120,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_x,      spawn,          {.v = musiccmd   } },
 	{ MODKEY,                       XK_d,      spawn,          {.v = fmcmd      } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = skypecmd   } },
+	{ MODKEY,                       XK_a,      spawn,          {.v = torrentscmd   } },
 
 
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },

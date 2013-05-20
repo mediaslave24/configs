@@ -31,10 +31,6 @@ alias subtle-c="gvim ~/.config/subtle/subtle.rb"
 # Reload .bashrc
 alias brc="source ~/.bashrc"
 
-# Daemons
-alias start_msd="sudo systemctl start mysqld"
-# alias start_pg="sudo systemctl start "
-
 # Untar
 alias untargz="tar -zxvf"
 
