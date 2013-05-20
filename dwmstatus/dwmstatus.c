@@ -127,7 +127,7 @@ runcmd(char* cmd) {
 int
 getvolume() {
 	int volume;
-        sscanf(runcmd("amixer | grep -A 6 PCM | grep 'Front Left: Playback'\
+        sscanf(runcmd("amixer | grep -A 6 Master | grep 'Front Left: Playback'\
 			| grep -o '[0-9%]*%'"), "%i%%", &volume);
 	return volume;
 }
@@ -141,7 +141,7 @@ getlang() {
 void
 setvolume(int percent) {
 	char volcmd[32];
-	sprintf(volcmd, "amixer set PCM %i%%", percent);
+	sprintf(volcmd, "amixer set Master %i%%", percent);
 	system(volcmd);
 }
 
