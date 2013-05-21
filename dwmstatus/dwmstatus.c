@@ -165,10 +165,17 @@ mkprogressbar(unsigned int size, unsigned int percent) {
 	return bar;
 }
 
+char*
+getstatus(int volume, char *lang, char *tla) {
+  /* return smprintf(" \033[0;36mVolume: \033[1;31m%i%% \033[0m \033[1;37m>>\033[0m \033[0;36mLanguage: \033[1;31m%s \033[1;37m>>\033[0;32m %s",  */
+  /*                 volume, lang, tla); */
+  return smprintf(" Volume: %i%%  >> \033[0;36mLanguage: \033[1;31m%s \033[1;37m>>\033[0;32m %s", 
+                  volume, lang, tla);
+}
+
 int
 main(int argc, char *argv[])
 {
-	char *status;
 	char *tla;
         char *lang;
 	int volume;
@@ -188,12 +195,9 @@ main(int argc, char *argv[])
 					volume += 5;
 				setvolume(volume);
 				tla = mktimes("%F %H:%M", tzukraine);
-                                status = smprintf("Vol: %i%% | Lang: %s | %s",
-                                        volume, lang,  tla);
-				setstatus(status);
+                                setstatus(getstatus(volume, lang, tla));
                                 free(lang);
 				free(tla);
-				free(status);
 				exit(0);
 			} else if (strcmp(argv[2], "down") == 0) {
                                 volume = getvolume();
@@ -202,12 +206,9 @@ main(int argc, char *argv[])
 					volume -= 5;
                                 setvolume(volume);
                                 tla = mktimes("%F %H:%M", tzukraine);
-                                status = smprintf("Vol: %i%% | Lang: %s | %s",
-                                        volume, lang,  tla);
-                                setstatus(status);
+                                setstatus(getstatus(volume, lang, tla));
                                 free(lang);
 				free(tla);
-				free(status);
                                 exit(0);
 			} else if (strcmp(argv[2], "set") == 0) {
                                 lang = getlang();
@@ -215,12 +216,9 @@ main(int argc, char *argv[])
                                 setvolume(setvol);
                                 volume = getvolume();
                                 tla = mktimes("%F %H:%M", tzukraine);
-                                status = smprintf("Vol: %i%% | Lang: %s | %s",
-                                        volume, lang,  tla);
-                                setstatus(status);
+                                setstatus(getstatus(volume, lang, tla));
                                 free(lang);
 				free(tla);
-				free(status);
                                 exit(0);
 			}
 		}
@@ -228,12 +226,9 @@ main(int argc, char *argv[])
                   tla = mktimes("%F %H:%M", tzukraine);
                   volume = getvolume();
                   lang = getlang();
-                  status = smprintf("Vol: %i%% | Lang: %s | %s",
-                          volume, lang,  tla);
-                  setstatus(status);
+                  setstatus(getstatus(volume, lang, tla));
                   free(lang);
                   free(tla);
-                  free(status);
                   exit(0);
                 }
 		exit(0);
@@ -243,12 +238,9 @@ main(int argc, char *argv[])
 		tla = mktimes("%F %H:%M", tzukraine);
 		volume = getvolume();
                 lang = getlang();
-		status = smprintf("Vol: %i%% | Lang: %s | %s",
-			volume, lang,  tla);
-		setstatus(status);
+		setstatus(getstatus(volume, lang, tla));
                 free(lang);
 		free(tla);
-		free(status);
 	}
 
 	XCloseDisplay(dpy);
