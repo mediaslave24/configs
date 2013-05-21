@@ -88,8 +88,10 @@ static const char *xkben[] = { "xkb-switch", "-s", "us", NULL };
 static const char *xkbua[] = { "xkb-switch", "-s", "ua", NULL };
 static const char *xkbru[] = { "xkb-switch", "-s", "ru", NULL };
 
-static const char *rebootcmd[] = { "sudo", "reboot", NULL };
-static const char *shutdowncmd[] = { "sudo", "shutdown -h", NULL };
+static const char *rebootcmd[] =   { "sudo", "reboot",                   NULL };
+static const char *shutdowncmd[] = { "sudo", "shutdown", "-h",           NULL };
+static const char *blockcmd[] =    { "xscreensaver-command", "-lock,",   NULL };
+static const char *sleepcmd[] =    { "xscreensaver-command", "-activate", NULL };
 
 
 
@@ -115,6 +117,8 @@ static Key keys[] = {
         /* My additions */
 	{ MODKEY,                       XK_Home,   spawn,          {.v = shutdowncmd   } },
 	{ MODKEY,                       XK_End,    spawn,          {.v = rebootcmd   } },
+	{ MODKEY,                       XK_Delete, spawn,          {.v = blockcmd   } },
+	{ MODKEY,                       XK_Insert, spawn,          {.v = sleepcmd   } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd   } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd    } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
