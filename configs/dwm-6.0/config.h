@@ -22,14 +22,14 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1,            False,       -1 },
-	{ "Chromium", NULL,       NULL,       1,            True,        -1 },
-	{ "Gvim",     NULL,       NULL,  1 << 1,            True,        -1 },
+	{ "Chromium", NULL,       NULL,       1,            False,        -1 },
+	{ "Gvim",     NULL,       NULL,  1 << 1,            False,        -1 },
 	{ "URxvt",    NULL,       NULL,  1 << 2,            False,       -1 },
 	{ "Pcmanfm",  NULL,       NULL,  1 << 3,            False,       -1 },
 	{ "Exaile",   NULL,       NULL,  1 << 4,            False,       -1 },
 	{ "Vlc",      NULL,       NULL,  1 << 4,            False,       -1 },
 	{ "Deluge",   NULL,       NULL,  1 << 5,            False,       -1 },
-	{ "Mirage",   NULL,       NULL,       0,            False,       -1 },
+	{ "Mirage",   NULL,       NULL,       0,            True,        -1 },
 	{ "feh",      NULL,       NULL,       0,            False,       -1 },
 	{ "Skype",    NULL,       NULL,  1 << 6,            False,       -1 },
 
@@ -112,13 +112,14 @@ static Key keys[] = {
 	{ ALTMOD,                       XK_s,      spawn,          {.v = xkbua      } },
 	{ ALTMOD,                       XK_d,      spawn,          {.v = xkbru      } },
 
+        /* My additions */
 	{ MODKEY,                       XK_Home,   spawn,          {.v = shutdowncmd   } },
 	{ MODKEY,                       XK_End,    spawn,          {.v = rebootcmd   } },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd   } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd    } },
 	{ MODKEY,                       XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = musiccmd   } },
-	{ MODKEY,                       XK_d,      spawn,          {.v = fmcmd      } },
+	{ MODKEY,                       XK_s,      spawn,          {.v = fmcmd      } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = skypecmd   } },
 	{ MODKEY,                       XK_a,      spawn,          {.v = torrentscmd   } },
 
