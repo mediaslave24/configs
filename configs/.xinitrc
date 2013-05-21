@@ -18,10 +18,10 @@ done &
 xscreensaver -no-splash &
 dropboxd &
 
-if $SSH_AGENT_PID; then
-  ssh-agent -k
-fi
-eval $(ssh-agent)
+# if $SSH_AGENT_PID; then
+#   ssh-agent -k
+# fi
+# eval $(ssh-agent)
 
 __start_dwm() {
   dwmstatus &
@@ -29,12 +29,12 @@ __start_dwm() {
     dwmstatus refresh
     xkb-switch --wait
   done &
-  while true; do
+  # while true; do
       # Log stderror to a file 
-      dwm 2> ~/.dwm.log
+  dwm 2> ~/.dwm.log
       # No error logging
       #dwm >/dev/null 2>&1
-  done
+  # done
   
 }
 
