@@ -851,7 +851,7 @@ drawbar(Monitor *m) {
 		if(showsystray && m == selmon) {
 			dc.x -= getsystraywidth();
 		}
-                drawstatus(m); //la11111
+        +       drawstatus(m); //la11111
 	}
 	else
 		dc.x = m->ww;
