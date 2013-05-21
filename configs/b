@@ -1,0 +1,44 @@
+#!/bin/bash
+# My shortcuts for browser, which i use with dmenu and dwm
+BROWSER='chromium'
+case "$1" in
+  # Archlinux resources
+  a)
+    $BROWSER http://archlinux.org
+    ;;
+  aur)
+    $BROWSER http://aur.archlinux.org
+    ;;
+  aw)
+    $BROWSER http://wiki.archlinux.org
+    ;;
+  g)
+    $BROWSER http://google.com
+    ;;
+  f)
+    $BROWSER http://www.feedly.com/home
+    ;;
+  b)
+    $BROWSER http://bitbucket.org
+    ;;
+  v)
+    $BROWSER http://vk.com
+    ;;
+
+  # Ruby and Rails
+  rg)
+    $BROWSER http://guides.rubyonrails.org/
+    ;;
+  ra)
+    $BROWSER http://api.rubyonrails.org
+    ;;
+  1)
+    $BROWSER http://localhost:3000
+    ;;
+  2)
+    $BROWSER http://localhost:4000
+    ;;
+  3)
+    $BROWSER http://localhost:3333
+    ;;
+esac
