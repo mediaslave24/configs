@@ -90,7 +90,7 @@ static const char *xkbru[] = { "xkb-switch", "-s", "ru", NULL };
 
 static const char *rebootcmd[] =   { "sudo", "reboot",                   NULL };
 static const char *shutdowncmd[] = { "sudo", "shutdown", "-h",           NULL };
-static const char *blockcmd[] =    { "xscreensaver-command", "-lock,",   NULL };
+static const char *blockcmd[] =    { "xscreensaver-command", "-lock",   NULL };
 static const char *sleepcmd[] =    { "xscreensaver-command", "-activate", NULL };
 
 
