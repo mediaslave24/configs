@@ -22,8 +22,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            True,        -1 },
 	{ "Firefox",  NULL,       NULL,       1,            False,       -1 },
-	{ "Chromium", NULL,       NULL,       1,            False,        -1 },
-	{ "Gvim",     NULL,       NULL,  1 << 1,            False,        -1 },
+	{ "Chromium", NULL,       NULL,       1,            False,       -1 },
+	{ "Gvim",     NULL,       NULL,  1 << 1,            False,       -1 },
 	{ "URxvt",    NULL,       NULL,  1 << 2,            False,       -1 },
 	{ "Pcmanfm",  NULL,       NULL,  1 << 3,            False,       -1 },
 	{ "Exaile",   NULL,       NULL,  1 << 4,            False,       -1 },
@@ -69,8 +69,8 @@ static const char *torrentscmd[] =     { "deluge", NULL };
 static const char *skypecmd[] =        { "skype", "--disable-cleanlooks", "-style", "GTK", NULL };
 static const char *toggle_exaile[] =   { "exaile", "-t", NULL };
 
-static const char *volup[] =   { "amixer", "set", "master", "5%+", NULL };
-static const char *voldown[] = { "amixer", "set", "master", "5%-", NULL };
+static const char *volup[] =   { "amixer", "set", "Master", "5%+", NULL };
+static const char *voldown[] = { "amixer", "set", "Master", "5%-", NULL };
 
 static const char *vol0[] = { "amixer", "set", "Master", "0%", NULL };
 static const char *vol1[] = { "amixer", "set", "Master", "10%", NULL };
@@ -179,4 +179,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
