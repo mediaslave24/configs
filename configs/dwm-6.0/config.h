@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const char font[]            = "-*-ubuntu mono-medium-r-*-*-13-*-*-*-*-*-*-uni";
+static const char font[]            = "-*-ubuntu mono-medium-r-normal-*-13-*-100-100-*-*-*-uni";
 static const char normbordercolor[] = "#444444";
 static const char normbgcolor[]     = "#222222";
 static const char normfgcolor[]     = "#bbbbbb";
@@ -69,19 +69,19 @@ static const char *torrentscmd[] =     { "deluge", NULL };
 static const char *skypecmd[] =        { "skype", "--disable-cleanlooks", "-style", "GTK", NULL };
 static const char *toggle_exaile[] =   { "exaile", "-t", NULL };
 
-static const char *volup[] =   { "dwmstatus", "volume", "up", NULL };
-static const char *voldown[] = { "dwmstatus", "volume", "down", NULL };
+static const char *volup[] =   { "amixer", "set", "master", "5%+", NULL };
+static const char *voldown[] = { "amixer", "set", "master", "5%-", NULL };
 
-static const char *vol0[] = { "dwmstatus", "volume", "set", "0", NULL };
-static const char *vol1[] = { "dwmstatus", "volume", "set", "10", NULL };
-static const char *vol2[] = { "dwmstatus", "volume", "set", "20", NULL };
-static const char *vol3[] = { "dwmstatus", "volume", "set", "30", NULL };
-static const char *vol4[] = { "dwmstatus", "volume", "set", "40", NULL };
-static const char *vol5[] = { "dwmstatus", "volume", "set", "50", NULL };
-static const char *vol6[] = { "dwmstatus", "volume", "set", "60", NULL };
-static const char *vol7[] = { "dwmstatus", "volume", "set", "70", NULL };
-static const char *vol8[] = { "dwmstatus", "volume", "set", "80", NULL };
-static const char *vol9[] = { "dwmstatus", "volume", "set", "90", NULL };
+static const char *vol0[] = { "amixer", "set", "Master", "0%", NULL };
+static const char *vol1[] = { "amixer", "set", "Master", "10%", NULL };
+static const char *vol2[] = { "amixer", "set", "Master", "20%", NULL };
+static const char *vol3[] = { "amixer", "set", "Master", "30%", NULL };
+static const char *vol4[] = { "amixer", "set", "Master", "40%", NULL };
+static const char *vol5[] = { "amixer", "set", "Master", "50%", NULL };
+static const char *vol6[] = { "amixer", "set", "Master", "60%", NULL };
+static const char *vol7[] = { "amixer", "set", "Master", "70%", NULL };
+static const char *vol8[] = { "amixer", "set", "Master", "80%", NULL };
+static const char *vol9[] = { "amixer", "set", "Master", "90%", NULL };
 
 
 static const char *xkben[] = { "xkb-switch", "-s", "us", NULL };
