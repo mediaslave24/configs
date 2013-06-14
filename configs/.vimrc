@@ -110,8 +110,8 @@ nnoremap <silent><F7> :qa<CR>
 nnoremap <silent><F8> :q<CR>
 nnoremap <silent><S-F8> :qa<CR>
 nnoremap <C-W>Q :qa!<CR>
-nnoremap <silent> <C-N> :cnf<CR>zv
-nnoremap <silent> <C-P> :cpf<CR>zv
+nnoremap <silent> <C-N> :cn<CR>zv
+nnoremap <silent> <C-P> :cp<CR>zv
 
 " nmap <silent><C-H> gT
 " nmap <silent><C-L> gt
@@ -135,4 +135,4 @@ iabbrev ret return
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 " set guioptions-=r  "remove right-hand scroll bar
-set guifont=UbuntuMono\ 14
+set guifont=UbuntuMono\ 12
