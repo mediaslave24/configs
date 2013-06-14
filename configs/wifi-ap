@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo create_ap -w2 wlp2s0 enp4s0 ms24-sharepoint rackpassword
