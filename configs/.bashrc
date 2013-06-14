@@ -14,13 +14,10 @@
 # 
 
 
-### ENV VARIABLES ###
 PS1='[\u@\h \W]\$ '
-export EDITOR='vim'
-export BROWSER="chromium"
 # RVM
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-export GREP_OPTIONS="--binary-files=without-match --directories=skip"
+PATH=$HOME/bin:$PATH
 
 ### ALIASES ###
 # Colored ls, less
@@ -44,6 +41,8 @@ alias cfs="cd ~/repos/configs"
 alias kt="cd ~/repos/kasto"
 alias lr="cd ~/repos/lit-bed-rails"
 alias dwmc="cd ~/repos/configs/configs/dwm-6.0"
+alias ae="cd ~/repos/artistecard"
+alias ae3="cd ~/repos/artistecard_site"
 
 # Test connection
 alias test_inet="ping -c 3 www.google.com"
@@ -55,3 +54,5 @@ alias b="bundle"
 
 alias start_mongodb="sudo systemctl start mongodb"
 alias start_mysql="sudo systemctl start mysql"
+
+alias gem-install="gem install --no-rdoc --no-ri"

@@ -9,7 +9,11 @@
 PATH="/usr/local/heroku/bin:$PATH"
 export PATH=$HOME/bin:$PATH
 export BROWSER='chromium'
+BROWSER='chromium'
 export EDITOR='vim'
 export GREP_OPTIONS="--binary-files=without-match --directories=skip"
 
-eval $(keychain --eval --agents ssh id_rsa id_ecdsa)
+export TASKRC="~/Dropbox/.taskrc"
+export TASKDATA="~/Dropbox/.taskdata"
+
+eval $(keychain --eval -Q --agents ssh id_rsa id_ecdsa)
