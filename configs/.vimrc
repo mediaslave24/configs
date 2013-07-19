@@ -16,7 +16,12 @@ set showcmd		  " display incomplete commands
 set incsearch		  " do incremental searching
 set smartcase		  " Override the 'ignorecase' option if the search pattern contains upper case characters
 set ignorecase
+
 set foldmethod=manual     " Folds are created manually 
+" set foldmethod=indent
+" set foldlevel=3
+set nofoldenable
+
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -110,8 +115,9 @@ nnoremap <silent><F7> :qa<CR>
 nnoremap <silent><F8> :q<CR>
 nnoremap <silent><S-F8> :qa<CR>
 nnoremap <C-W>Q :qa!<CR>
-nnoremap <silent> <C-N> :cn<CR>zv
-nnoremap <silent> <C-P> :cp<CR>zv
+nnoremap <silent> <C-N> :cnf<CR>zv
+nnoremap <silent> <C-P> :cpf<CR>zv
+nnoremap zr :!ruby %<CR>
 
 " nmap <silent><C-H> gT
 " nmap <silent><C-L> gt
@@ -119,7 +125,7 @@ nnoremap <silent> <C-P> :cp<CR>zv
 inoremap <leader>; <C-O>:s/\([^;\s]\)\s*$/\1;/<CR><End>
 nnoremap <silent><C-W>` :NERDTreeFind<CR>
 
-nnoremap <F2> :nohlsearch<CR>
+nnoremap <F2> :noh<CR>
 
 let g:proj_flags='istg'
 
@@ -135,4 +141,8 @@ iabbrev ret return
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 " set guioptions-=r  "remove right-hand scroll bar
-set guifont=UbuntuMono\ 12
+set guifont=UbuntuMono\ 13
+
+let g:syntastic_javascript_jslint_conf = "--predef Backbone --predef jQuery --predef $ --predef _ --nomen --indent 2 --browser"
+
+autocmd BufNewFile,BufRead *.bf set filetype=brainfuck
