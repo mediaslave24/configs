@@ -8,8 +8,9 @@ xscrensaver*lock: true
 
 ! URxvt
 URxvt*loginShell: true
+
 !urxvt color scheme:
-URxvt*background: #2B2B2B
+URxvt*background: #000000
 URxvt*foreground: #DEDEDE
 
 URxvt*transparent: true
@@ -18,9 +19,6 @@ URxvt*shading:     20
 URxvt*colorUL: #86a2b0
 URxvt*cursorColor: #859900
 
-! black
-URxvt*color0  : #2E3436
-URxvt*color8  : #555753
 ! red
 URxvt*color1  : #CC0000
 URxvt*color9  : #EF2929
@@ -44,37 +42,40 @@ URxvt*color7  : #D3D7CF
 URxvt*color15 : #EEEEEC
 
 !urxvt fonts: 
-
-URxvt*font: xft:Monospace:pixelsize=13
-URxvt*boldFont: xft:Monospace:bold:pixelsize=13
+URxvt*font: xft:Ubuntu Mono:antialias=false:size=13
+URxvt*boldFont: xft:Ubuntu Mono:bold:size=13:antialias=false
 
 
 !urxvt extensions:
-
-URxvt.perl-ext-common:  default,matcher,tabbedex
+URxvt.perl-ext-common:  default,tabbedex,font-size,clipboard,url-select,keyboard-select
 URxvt.keysym.M-t:       perl:tabbedex:new_tab
 URxvt.keysym.M-j:       perl:tabbedex:prev_tab
 URxvt.keysym.M-k:       perl:tabbedex:next_tab
-! URxvt.keysym.M-t:       new_tab
+URxvt.keysym.C-Up:      perl:font-size:increase
+URxvt.keysym.C-Down:    perl:font-size:decrease
 
-! URxvt.perl-ext-common:  default,tabbed,matcher
+URxvt.url-select.launcher:  chromium
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
 
 !enabling clickable links:
-
-URxvt.urlLauncher:      /usr/bin/chromium
+URxvt.url-launcher:      /usr/bin/chromium
 URxvt.matcher.button:   1 
 
 !urxvt scrolling options and cursor style:
 
 URxvt*saveLines: 12000
+
 !rxvt,plain, xterm, next
 URxvt*scrollstyle: plain
-URxvt*scrollBar: false
+URxvt*scrollBar_right: true
+URxvt*scrollBar: true
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: false
 
 ! urxvt tabs settings:
-
 URxvt.tabbed.tabbar-fg: 2
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 2
