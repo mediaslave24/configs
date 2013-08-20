@@ -11,6 +11,7 @@ assign [class="Chromium"] www
 assign [class="Pcmanfm"] fm
 assign [class="Skype"] im
 assign [class="Deluge"] torrents
+assign [class="URxvt" instance="cmus"] media
 
 for_window [class="Alarm-clock-applet"] floating enable
 
