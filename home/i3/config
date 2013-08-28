@@ -27,6 +27,7 @@ bindsym $mod2+Insert exec sudo xscreensaver-command -activate
 
 bindsym $mod2+b exec chromium
 bindsym $mod2+c exec pcmanfm
+bindsym $mod2+shift+c exec urxvt -name ranger -e ranger
 bindsym $mod2+v exec deluge
 bindsym $mod2+x exec urxvt -name cmus -e cmus
 bindsym $mod2+z exec skype --disable-cleanlooks -style GTK
