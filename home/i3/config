@@ -25,6 +25,7 @@ bindsym $mod2+End exec sudo reboot
 bindsym $mod2+Delete exec sudo xscreensaver-command -lock
 bindsym $mod2+Insert exec sudo xscreensaver-command -activate
 
+bindsym $mod2+n exec thunderbird
 bindsym $mod2+b exec chromium
 bindsym $mod2+c exec pcmanfm
 bindsym $mod2+shift+c exec urxvt -name ranger -e ranger
