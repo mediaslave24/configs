@@ -15,6 +15,7 @@ assign [class="URxvt" instance="cmus"] media
 assign [class="Thunderbird"] mail
 
 for_window [class="Alarm-clock-applet"] floating enable
+for_window [class="Gnome-calculator"] floating enable
 
 bindsym Print exec import -window root ~/screenshot.jpg
 bindsym Pause exec ~/.i3/toggle-mute.sh
