@@ -1,0 +1,15 @@
+out_to_console yes
+out_to_x no
+update_interval 1
+total_run_times 0
+
+#${execpi 7 ~/.i3/player-state.sh} |\
+TEXT
+${cpu cpu0}% | ${cpu cpu1}% |\
+${if_existing /proc/net/route wlp2s0} W: ${downspeed wlp2s0} ${upspeed wlp2s0}|$endif\
+${if_existing /proc/net/route enp9s5} E: ${downspeed enp9s5} ${upspeed enp9s5}|$endif\
+ ${fs_used /}/${fs_size /} |\
+ ${fs_used /home}/${fs_size /home} |\
+ ${execp amixer get Master | grep -A6 Master | grep -o '[0-9]*%' } |\
+ ${execp xkb-switch} |\
+ ${time %Y-%m-%d %H:%M}
