@@ -1,11 +1,38 @@
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# GUIDE: http://i3wm.org/docs/userguide.html
 
+####################
+#     KEYS
+####################
 set $mod Mod4
 set $mod2 Mod1
 set $cont control
+####################
+#     Programs
+####################
+
+set $terminal urxvt
+set $browser1 chromium
+set $mailer thunderbird
+set $calculator gnome-calculator
+set $filemanager1 pcmanfm
+set $filemanager2 urxvt -name ranger -e ranger
+set $torrents deluge
+set $player1 urxvt -name cmus -e cmus
+set $im1 skype --disable-cleanlooks -style GTK
+
+workspace_layout tabbed
+hide_edge_borders both
+focus_follows_mouse no
+
+exec thunderbird
+exec chromium
+exec urxvt
+for_window [class="URxvt"] move workspace term
 
 bindsym $cont+Return exec urxvt
 bindsym $cont+Shift+q kill
+
+bindsym $mod+BackSpace workspace back_and_forth
 
 assign [class="Chromium"] www
 assign [class="Pcmanfm"] fm
@@ -18,24 +45,23 @@ for_window [class="Alarm-clock-applet"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 
 bindsym Print exec import -window root ~/screenshot.jpg
-bindsym Pause exec ~/.i3/toggle-mute.sh
-bindsym $mod+F12 exec share
-bindsym $mod+F11 exec restart-inet
 
-bindsym $mod2+Home exec sudo sudo s2disk
-bindsym $mod2+End exec sudo reboot
+# bindsym $mod2+Home exec sudo sudo s2disk
+bindsym $mod2-shift+End exec sudo reboot
 bindsym $mod2+Delete exec sudo xscreensaver-command -lock
 bindsym $mod2+Insert exec sudo xscreensaver-command -activate
 
-bindsym $mod2+m exec gnome-calculator
-bindsym $mod2+n exec thunderbird
-bindsym $mod2+b exec chromium
-bindsym $mod2+c exec pcmanfm
-bindsym $mod2+shift+c exec urxvt -name ranger -e ranger
-bindsym $mod2+v exec deluge
-bindsym $mod2+x exec urxvt -name cmus -e cmus
-bindsym $mod2+z exec skype --disable-cleanlooks -style GTK
+bindsym $mod2+b exec $browser1
+bindsym $mod2+n exec $mailer
+bindsym $mod2+m exec $calculator
+bindsym $mod2+c exec $filemanager1
+bindsym $mod2+shift+c exec $filemanager2
+bindsym $mod2+v exec $torrents
+bindsym $mod2+x exec $player1
+bindsym $mod2+z exec $im1
 bindsym $mod2+Shift+z exec killall skype
+
+bindsym $mod2+period exec urxvt -fn 'xft:Ubuntu Mono:antialias=false:size=16' -e nethack
 
 bindsym $mod2+a exec xkb-switch -s us
 bindsym $mod2+s exec xkb-switch -s ua
