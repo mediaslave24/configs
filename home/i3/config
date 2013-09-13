@@ -6,10 +6,10 @@
 set $mod Mod4
 set $mod2 Mod1
 set $cont control
-####################
-#     Programs
-####################
 
+####################
+#   Main Programs
+####################
 set $terminal urxvt
 set $browser1 chromium
 set $mailer thunderbird
@@ -20,37 +20,67 @@ set $torrents deluge
 set $player1 urxvt -name cmus -e cmus
 set $im1 skype --disable-cleanlooks -style GTK
 
+####################
+#   i3 Options
+####################
 workspace_layout tabbed
 hide_edge_borders both
 focus_follows_mouse no
 
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+####################
+# Startup
+####################
 exec thunderbird
 exec chromium
+workspace term output LVDS-0
 exec urxvt
-for_window [class="URxvt"] move workspace term
+####################
+# Main Bindings
+####################
 
-bindsym $cont+Return exec urxvt
-bindsym $cont+Shift+q kill
-
+bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+BackSpace workspace back_and_forth
+bindsym $mod+Shift+c reload   # reload the configuration file
+bindsym $mod+Shift+r restart  # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod2+Home exec sudo sudo s2disk
+bindsym $mod2+shift+End exec sudo reboot
 
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+# kill focused window
+bindsym $mod+Shift+q kill 
+bindsym $mod+d exec dmenu_run # start dmenu (a program launcher)
+
+####################
+# Common Bindings
+####################
+bindsym Print exec import -window root ~/screenshot.jpg
+bindsym $mod2+Shift+z exec killall skype
+bindsym $mod2+period exec urxvt -fn 'xft:Ubuntu Mono:antialias=false:size=16' -e nethack
+
+bindsym $mod2+a exec xkb-switch -s us
+bindsym $mod2+s exec xkb-switch -s ua
+bindsym $mod2+d exec xkb-switch -s ru
+
+####################
+# Windows Rules
+####################
 assign [class="Chromium"] www
 assign [class="Pcmanfm"] fm
 assign [class="Skype"] im
 assign [class="Deluge"] torrents
 assign [class="URxvt" instance="cmus"] media
 assign [class="Thunderbird"] mail
-
 for_window [class="Alarm-clock-applet"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 
-bindsym Print exec import -window root ~/screenshot.jpg
-
-# bindsym $mod2+Home exec sudo sudo s2disk
-bindsym $mod2-shift+End exec sudo reboot
-bindsym $mod2+Delete exec sudo xscreensaver-command -lock
-bindsym $mod2+Insert exec sudo xscreensaver-command -activate
-
+####################
+# Bootstrap Bindings
+####################
 bindsym $mod2+b exec $browser1
 bindsym $mod2+n exec $mailer
 bindsym $mod2+m exec $calculator
@@ -59,46 +89,81 @@ bindsym $mod2+shift+c exec $filemanager2
 bindsym $mod2+v exec $torrents
 bindsym $mod2+x exec $player1
 bindsym $mod2+z exec $im1
-bindsym $mod2+Shift+z exec killall skype
 
-bindsym $mod2+period exec urxvt -fn 'xft:Ubuntu Mono:antialias=false:size=16' -e nethack
-
-bindsym $mod2+a exec xkb-switch -s us
-bindsym $mod2+s exec xkb-switch -s ua
-bindsym $mod2+d exec xkb-switch -s ru
-
-bindsym $mod2+f exec ~/.i3/volume.sh down
-bindsym $mod2+g exec ~/.i3/volume.sh up 
-
-bindsym $mod2+1 exec ~/.i3/volume.sh set 10
-bindsym $mod2+2 exec ~/.i3/volume.sh set 20
-bindsym $mod2+3 exec ~/.i3/volume.sh set 30
-bindsym $mod2+4 exec ~/.i3/volume.sh set 40
-bindsym $mod2+5 exec ~/.i3/volume.sh set 50
-bindsym $mod2+6 exec ~/.i3/volume.sh set 60
-bindsym $mod2+7 exec ~/.i3/volume.sh set 70
-bindsym $mod2+8 exec ~/.i3/volume.sh set 80
-bindsym $mod2+9 exec ~/.i3/volume.sh set 90
-bindsym $mod2+0 exec ~/.i3/volume.sh set 0
-bindsym $mod2+minus exec ~/.i3/volume.sh 1down
-bindsym $mod2+equal exec ~/.i3/volume.sh 1up
+####################
+# Sound Bindings
+####################
+bindsym $mod2+f exec amixer set Master 5%-
+bindsym $mod2+g exec amixer set Master 5%+ 
+bindsym $mod2+minus exec amixer set Master 1%-
+bindsym $mod2+equal exec amixer set Master 1%+
+bindsym $mod2+1 exec amixer set Master 10%
+bindsym $mod2+2 exec amixer set Master 20%
+bindsym $mod2+3 exec amixer set Master 30%
+bindsym $mod2+4 exec amixer set Master 40%
+bindsym $mod2+5 exec amixer set Master 50%
+bindsym $mod2+6 exec amixer set Master 60%
+bindsym $mod2+7 exec amixer set Master 70%
+bindsym $mod2+8 exec amixer set Master 80%
+bindsym $mod2+9 exec amixer set Master 90%
+bindsym $mod2+0 exec amixer set Master 0%
 
 bindsym $mod2+space exec cmus-remote --pause
 
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+####################
+# Workspaces
+####################
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+set $wk1 www
+set $wk2 term
+set $wk3 fm
+set $wk4 media
+set $wk5 im
+set $wk6 mail
+set $wk7 torrents
+set $wk8 else1
+set $wk9 else2
+set $wk0 else3
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+set $work1 work1
+set $work2 work2
+set $work3 work3
 
-# kill focused window
-bindsym $mod+Shift+q kill
+# switch to workspace
+bindsym $mod+1 workspace $wk1
+bindsym $mod+2 workspace $wk2
+bindsym $mod+3 workspace $wk3
+bindsym $mod+4 workspace $wk4
+bindsym $mod+5 workspace $wk5
+bindsym $mod+6 workspace $wk6
+bindsym $mod+7 workspace $wk7
+bindsym $mod+8 workspace $wk8
+bindsym $mod+9 workspace $wk9
+bindsym $mod+0 workspace $wk0
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+bindsym $mod+$cont+q workspace $work1
+bindsym $mod+$cont+w workspace $work2
+bindsym $mod+$cont+e workspace $work3
 
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $wk1
+bindsym $mod+Shift+2 move container to workspace $wk2
+bindsym $mod+Shift+3 move container to workspace $wk3
+bindsym $mod+Shift+4 move container to workspace $wk4
+bindsym $mod+Shift+5 move container to workspace $wk5
+bindsym $mod+Shift+6 move container to workspace $wk6
+bindsym $mod+Shift+7 move container to workspace $wk7
+bindsym $mod+Shift+8 move container to workspace $wk8
+bindsym $mod+Shift+9 move container to workspace $wk9
+bindsym $mod+Shift+0 move container to workspace $wk0
+
+bindsym $mod+Shift+$cont+q move container to workspace $work1
+bindsym $mod+Shift+$cont+w move container to workspace $work2
+bindsym $mod+Shift+$cont+e move container to workspace $work3
+
+####################
+# Standard Config options
+####################
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -149,65 +214,23 @@ bindsym $mod+q focus parent
 # focus the child container
 bindsym $mod+a focus child
 
-# switch to workspace
-bindsym $mod+1 workspace www
-bindsym $mod+2 workspace term
-bindsym $mod+3 workspace fm
-bindsym $mod+4 workspace media
-bindsym $mod+5 workspace im
-bindsym $mod+6 workspace mail
-bindsym $mod+7 workspace torrents
-bindsym $mod+8 workspace else2
-bindsym $mod+9 workspace else3
-bindsym $mod+0 workspace else4
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace www
-bindsym $mod+Shift+2 move container to workspace term
-bindsym $mod+Shift+3 move container to workspace fm
-bindsym $mod+Shift+4 move container to workspace media
-bindsym $mod+Shift+5 move container to workspace im
-bindsym $mod+Shift+6 move container to workspace mail
-bindsym $mod+Shift+7 move container to workspace torrents
-bindsym $mod+Shift+8 move container to workspace else2
-bindsym $mod+Shift+9 move container to workspace else3
-bindsym $mod+Shift+0 move container to workspace else4
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
         bindsym Down resize grow height 10 px or 10 ppt
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
         status_command conky
         position bottom
