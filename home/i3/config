@@ -58,6 +58,8 @@ bindsym $mod+d exec dmenu_run # start dmenu (a program launcher)
 ####################
 # Common Bindings
 ####################
+floating_minimum_size 600 x 400
+
 bindsym Print exec import -window root ~/screenshot.jpg
 bindsym $mod2+Shift+z exec killall skype
 bindsym $mod2+period exec urxvt -fn 'xft:Ubuntu Mono:antialias=false:size=16' -e nethack
@@ -89,6 +91,20 @@ bindsym $mod2+shift+c exec $filemanager2
 bindsym $mod2+v exec $torrents
 bindsym $mod2+x exec $player1
 bindsym $mod2+z exec $im1
+
+####################
+# NumPad
+####################
+bindsym $mod2+KP_1 exec chromium --app=http://cloud.feedly.com
+bindsym $mod2+KP_2 exec chromium --app=http://homemoney.ua
+bindsym $mod2+KP_3 exec chromium --app=http://vk.com
+
+####################
+# ScratchPad
+####################
+bindsym $mod+i [instance="todoist.com" class="Chromium"] scratchpad show
+bindsym $mod2+i [instance="todoist.com" class="Chromium"] kill; exec chromium --app=http://todoist.com
+for_window [instance="todoist.com" class="Chromium"] move scratchpad
 
 ####################
 # Sound Bindings
