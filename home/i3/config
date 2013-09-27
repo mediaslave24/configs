@@ -36,6 +36,7 @@ exec thunderbird
 exec chromium
 workspace term output LVDS-0
 exec urxvt
+exec xautolock -time 15 -corners ++++ -cornerdelay 1 -cornerredelay 5 -locker 'i3lock -i ~/i3lock.png'
 ####################
 # Main Bindings
 ####################
@@ -52,7 +53,7 @@ bindsym $mod2+shift+End exec sudo reboot
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 # kill focused window
-bindsym $mod+Shift+q kill 
+bindsym $mod+Escape kill 
 bindsym $mod+d exec dmenu_run # start dmenu (a program launcher)
 
 ####################
@@ -98,6 +99,8 @@ bindsym $mod2+z exec $im1
 bindsym $mod2+KP_1 exec chromium --app=http://cloud.feedly.com
 bindsym $mod2+KP_2 exec chromium --app=http://homemoney.ua
 bindsym $mod2+KP_3 exec chromium --app=http://vk.com
+bindsym $mod2+KP_4 exec chromium --app=http://todoist.com
+bindsym $mod2+KP_5 exec chromium --app=http://lingualeo.com
 
 ####################
 # ScratchPad
