@@ -19,6 +19,9 @@ set $filemanager2 urxvt -name ranger -e ranger
 set $torrents deluge
 set $player1 urxvt -name cmus -e cmus
 set $im1 skype --disable-cleanlooks -style GTK
+set $lock i3lock -i ~/i3lock.png
+set $locker xautolock -time 20 -corners 00+0 -cornerdelay 1 -cornerredelay 5 -locker 'i3lock -i ~/i3lock.png'
+set $screen1 DVI-0
 
 ####################
 #   i3 Options
@@ -34,12 +37,18 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 ####################
 exec thunderbird
 exec chromium
-workspace term output LVDS-0
+workspace term output $screen1
 exec urxvt
-exec xautolock -time 15 -corners ++++ -cornerdelay 1 -cornerredelay 5 -locker 'i3lock -i ~/i3lock.png'
+exec $locker
 ####################
 # Main Bindings
 ####################
+
+bindsym $mod2+F12 exec sudo systemctl restart netctl-auto@wlp5s0
+bindsym $mod2+F11 exec $lock
+bindsym $mod2+F10 exec $locker
+
+bindsym $mod2+Pause exec $lock; exec sudo systemctl suspend
 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+BackSpace workspace back_and_forth
